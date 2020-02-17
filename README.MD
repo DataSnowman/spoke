@@ -7,14 +7,12 @@
     <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.png"/>
 </a>
 
-This ARM template allows you to deploy an Ubuntu VM with Docker (using the installed Docker Extension).  
+1. This ARM template allows you to deploy an Ubuntu VM with Docker (using the installed Docker Extension).  
 
-Following the deployment 
-you can run `docker` commands by connecting to the virtual machine with SSH.  
+    Following the deployment you can run `docker` commands by connecting to the virtual machine with SSH.  
 
-The example used in this GitHub repo uses SQL Server 2019 running a SQL Server container image on Docker.  
+2. The example used in this GitHub repo uses SQL Server 2019 running a SQL Server container image on Docker. 
 
+    Click [HERE](https://github.com/DataSnowman/spoke/tree/master/dockerSQL) for directions on how to deploy SQL Server to Docker on the VM deployed in the Repo 
 
-
-
-The SQL Server part is based on the [Quickstart: Run SQL Server container images with Docker](https://docs.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?view=sql-server-ver15&pivots=cs1-bash)
+    The SQL Server part is based on the [Quickstart: Run SQL Server container images with Docker](https://docs.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?view=sql-server-ver15&pivots=cs1-bash)

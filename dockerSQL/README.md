@@ -145,7 +145,3 @@ After you have completed the Spoke deployment of an Ubuntu VM with Docker and Az
 15. Change Connection for SSMS or Azure Data Studio or VScode to use the New IPaddress
 
     `<NewIPaddress>,1433`
-
-
-
-

@@ -19,7 +19,12 @@
         "defaultValue": "Standard_F2",
         "metadata": {
           "description": "VM size for the Docker host."
-        }
+        },
+        "allowedValues": [
+          "Standard_D4_V3",
+          "Standard_D2_V3",
+          "Standard_F1"
+        ]
       },
       "ubuntuOSVersion": {
         "type": "string",
