@@ -21,9 +21,10 @@
           "description": "VM size for the Docker host."
         },
         "allowedValues": [
-          "Standard_D4_V3",
+          "Standard_F1",
+          "Standard_F2",
           "Standard_D2_V3",
-          "Standard_F1"
+          "Standard_D4_V3"
         ]
       },
       "ubuntuOSVersion": {
