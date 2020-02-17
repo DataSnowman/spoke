@@ -56,6 +56,13 @@
         "metadata": {
           "description": "SSH Key or password for the Virtual Machine. SSH key is recommended."
         }
+      },
+      "resourcePrefix": {
+        "type": "string",
+        "defaultValue": "csa",
+        "metadata": {
+            "description": "Short Prefix (3 characters or less) for storage resources created by this template"
+        }
       }
     },
     "variables": {
@@ -84,7 +91,15 @@
           ]
         }
       },
-      "networkSecurityGroupName": "default-NSG"
+      "networkSecurityGroupName": "default-NSG",
+      "IngestStorageAccountName": "[concat('ingest', parameters('resourcePrefix'), uniqueString(subscription().subscriptionId))]",
+      "PreprocessStorageAccountName": "[concat('prepro', parameters('resourcePrefix'), uniqueString(subscription().subscriptionId))]",
+      "storageAccountType": "Standard_LRS",
+      "storageKind": "StorageV2",
+      "storageAccessTier": "Hot",
+      "storageSupportsHttpsTrafficOnly": true,
+      "storageIsHnsEnabled": true,
+      "storageLargeFileSharesState": "Enabled"
     },
     "resources": [
       {
@@ -233,6 +248,46 @@
           "typeHandlerVersion": "1.0",
           "autoUpgradeMinorVersion": true,
           "settings": {}
+        }
+      },
+      {
+        "type": "Microsoft.Storage/storageAccounts",
+        "apiVersion": "2019-06-01",
+        "name": "[variables('storageAccountName')]",
+        "location": "[parameters('location')]",
+        "dependsOn": [],
+        "tags": {
+            "Spoke Storage Ingest ": "Ingest"
+        },
+        "sku": {
+            "name": "[variables('ingestStorageAccountType')]"
+        },
+        "kind": "[variables('storageKind')]",
+        "properties": {
+            "accessTier": "[variables('storageAccessTier')]",
+            "supportsHttpsTrafficOnly": "[variables('storageSupportsHttpsTrafficOnly')]",
+            "isHnsEnabled": "[variables('storageIsHnsEnabled')]",
+            "largeFileSharesState": "[variables('storageLargeFileSharesState')]"
+        }
+      },
+      {
+        "type": "Microsoft.Storage/storageAccounts",
+        "apiVersion": "2019-06-01",
+        "name": "[variables('storageAccountName')]",
+        "location": "[parameters('location')]",
+        "dependsOn": [],
+        "tags": {
+            "Spoke Storage Ingest ": "Preprocess"
+        },
+        "sku": {
+            "name": "[variables('PreprocessStorageAccountName')]"
+        },
+        "kind": "[variables('storageKind')]",
+        "properties": {
+            "accessTier": "[variables('storageAccessTier')]",
+            "supportsHttpsTrafficOnly": "[variables('storageSupportsHttpsTrafficOnly')]",
+            "isHnsEnabled": "[variables('storageIsHnsEnabled')]",
+            "largeFileSharesState": "[variables('storageLargeFileSharesState')]"
         }
       }
     ]
