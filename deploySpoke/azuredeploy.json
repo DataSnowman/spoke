@@ -92,8 +92,8 @@
         }
       },
       "networkSecurityGroupName": "default-NSG",
-      "IngestStorageAccountName": "[concat('ingest', parameters('resourcePrefix'), uniqueString(subscription().subscriptionId))]",
-      "PreprocessStorageAccountName": "[concat('prepro', parameters('resourcePrefix'), uniqueString(subscription().subscriptionId))]",
+      "ingestStorageAccountName": "[concat('ingest', parameters('resourcePrefix'), uniqueString(subscription().subscriptionId))]",
+      "preprocessStorageAccountName": "[concat('prepro', parameters('resourcePrefix'), uniqueString(subscription().subscriptionId))]",
       "storageAccountType": "Standard_LRS",
       "storageKind": "StorageV2",
       "storageAccessTier": "Hot",
@@ -253,14 +253,14 @@
       {
         "type": "Microsoft.Storage/storageAccounts",
         "apiVersion": "2019-06-01",
-        "name": "[variables('storageAccountName')]",
+        "name": "[variables('ingestStorageAccountName')]",
         "location": "[parameters('location')]",
         "dependsOn": [],
         "tags": {
             "Spoke Storage Ingest ": "Ingest"
         },
         "sku": {
-            "name": "[variables('ingestStorageAccountType')]"
+            "name": "[variables('storageAccountType')]"
         },
         "kind": "[variables('storageKind')]",
         "properties": {
@@ -273,14 +273,14 @@
       {
         "type": "Microsoft.Storage/storageAccounts",
         "apiVersion": "2019-06-01",
-        "name": "[variables('storageAccountName')]",
+        "name": "[variables('preprocessStorageAccountName')]",
         "location": "[parameters('location')]",
         "dependsOn": [],
         "tags": {
             "Spoke Storage Ingest ": "Preprocess"
         },
         "sku": {
-            "name": "[variables('PreprocessStorageAccountName')]"
+            "name": "[variables('storageAccountType')]"
         },
         "kind": "[variables('storageKind')]",
         "properties": {
