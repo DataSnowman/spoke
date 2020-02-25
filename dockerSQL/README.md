@@ -38,7 +38,7 @@ After you have completed the Spoke deployment of an Ubuntu VM with Docker and Az
     `Note: Remember to do this part - I spent an entire Sunday troubleshooting why I could not connect in SSMS, Azure Data Studio, and VScode.  After changing the SA password all was well.`
 
     ```
-    sudo docker exec -it sql2 /opt/mssql-tools/bin/sqlcmd \
+    sudo docker exec -it sql1 /opt/mssql-tools/bin/sqlcmd \
         -S localhost -U SA -P "<YourStrong@Passw0rd>" \
         -Q 'ALTER LOGIN SA WITH PASSWORD="<YourNewStrong@Passw0rd>"'
     ```
