@@ -54,6 +54,16 @@ After you have completed the Spoke deployment of an Ubuntu VM with Docker and Az
     /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "<YourNewStrong@Passw0rd>"
     ```
 
+    `Note: If you get the following error:`
+
+    `Sqlcmd: Error: Microsoft ODBC Driver 17 for SQL Server : Login failed for user 'SA'..`
+
+    Then try this command with single quotes around 'SA' and '<YourNewStrong@Passw0rd>'
+
+    ```
+    /opt/mssql-tools/bin/sqlcmd -S localhost -U 'SA' -P '<YourNewStrong@Passw0rd>'
+    ```
+
 7. Create a new database
 
     `CREATE DATABASE TestDB`
@@ -69,6 +79,8 @@ After you have completed the Spoke deployment of an Ubuntu VM with Docker and Az
     `CREATE TABLE Inventory (id INT, name NVARCHAR(50), quantity INT)`
 
     `INSERT INTO Inventory VALUES (1, 'banana', 150); INSERT INTO Inventory VALUES (2, 'orange', 154);`
+
+    `GO`
 
 9. Select Data
 
