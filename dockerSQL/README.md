@@ -15,7 +15,7 @@ After you have completed the Spoke deployment of an Ubuntu VM with Docker and Az
 2. In a recent update I used Docker Compose to pull the official [Microsoft SQL Server](https://hub.docker.com/_/microsoft-mssql-server) image as part of the deployment.  You should be able to skip this pull command to pull SQL 2019 container image because it should already be present on the VM.
 
    ```
-   sudo docker pull mcr.microsoft.com/mssql/server:2019-GA-ubuntu-16.04
+   sudo docker pull mcr.microsoft.com/mssql/server:2019-latest
    ```
 
 3. Run the container image
@@ -23,7 +23,7 @@ After you have completed the Spoke deployment of an Ubuntu VM with Docker and Az
     ```
     sudo docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=<YourStrong@Passw0rd>" \
         -p 1433:1433 --name sql1 \
-        -d mcr.microsoft.com/mssql/server:2019-GA-ubuntu-16.04
+        -d mcr.microsoft.com/mssql/server:2019-latest
     ```
 
 
@@ -105,7 +105,7 @@ After you have completed the Spoke deployment of an Ubuntu VM with Docker and Az
 
     sudo docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=<YourStrong@Passw0rd>" \
         -p `1401:1433` --name sql1 \
-        -d mcr.microsoft.com/mssql/server:2019-GA-ubuntu-16.04
+        -d mcr.microsoft.com/mssql/server:2019-latest
 
     Protocal: `TCP`
     Action: `Allow`
