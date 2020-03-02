@@ -256,7 +256,7 @@
           "settings": {
             "compose": {
               "db": {
-                "image": "mssql/server"
+                "image": "mcr.microsoft.com/mssql/server"
               }
             }
           }
