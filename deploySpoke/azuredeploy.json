@@ -253,7 +253,13 @@
           "type": "DockerExtension",
           "typeHandlerVersion": "1.0",
           "autoUpgradeMinorVersion": true,
-          "settings": {}
+          "settings": {
+            "compose": {
+              "db": {
+                "image": "mssql/server"
+              }
+            }
+          }
         }
       },
       {
