@@ -12,7 +12,7 @@ After you have completed the Spoke deployment of an Ubuntu VM with Docker and Az
 
     `ssh user@<IPaddress>`
 
-2. In a recent update I used Docker Compose to pull the official [Microsoft SQL Server](https://hub.docker.com/_/microsoft-mssql-server)image as part of the deployment.  You should be able to skip this pull command to pull SQL 2019 container image because it should already be present on the VM.
+2. In a recent update I used Docker Compose to pull the official [Microsoft SQL Server](https://hub.docker.com/_/microsoft-mssql-server) image as part of the deployment.  You should be able to skip this pull command to pull SQL 2019 container image because it should already be present on the VM.
 
    ```
    sudo docker pull mcr.microsoft.com/mssql/server:2019-GA-ubuntu-16.04
