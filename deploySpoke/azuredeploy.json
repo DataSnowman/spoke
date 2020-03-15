@@ -14,6 +14,12 @@
           "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
         }
       },
+      "vmName": {
+        "type": "string",
+        "metadata": {
+          "description": "VM name for the Virtual Machine."
+        }
+      },
       "vmSize": {
         "type": "string",
         "defaultValue": "Standard_F2",
@@ -74,7 +80,6 @@
     "variables": {
       "imagePublisher": "Canonical",
       "imageOffer": "UbuntuServer",
-      "OSDiskName": "osdiskfordockersimple",
       "nicName": "spokeVMNicD",
       "extensionName": "DockerExtension",
       "addressPrefix": "10.0.0.0/16",
@@ -83,7 +88,8 @@
       "diskStorageType": "Standard_LRS",
       "publicIPAddressName": "spokePublicIPD",
       "publicIPAddressType": "Dynamic",
-      "vmName": "spokeDockerVM",
+      "vmName": "[parameters('vmName')]",
+      "vmSize": "[parameters('vmSize')]",
       "virtualNetworkName": "spokeVNETD",
       "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
       "linuxConfiguration": {
@@ -207,7 +213,7 @@
         ],
         "properties": {
           "hardwareProfile": {
-            "vmSize": "[parameters('vmSize')]"
+            "vmSize": "[variables('vmSize')]"
           },
           "osProfile": {
             "computerName": "[variables('vmName')]",
@@ -223,13 +229,23 @@
               "version": "latest"
             },
             "osDisk": {
-              "name": "[concat(variables('vmName'),'_OSDisk')]",
+              "name": "[concat(variables('vmName'),'-osdisk')]",
               "caching": "ReadWrite",
               "createOption": "FromImage",
               "managedDisk": {
                 "storageAccountType": "[variables('diskStorageType')]"
               }
-            }
+            },
+            "dataDisks": [
+              {
+                "name": "[concat(variables('vmName'),'-data-0')]",
+                "createOption": "FromImage",
+                "managedDisk": {
+                      "storageAccountType": "[variables('diskStorageType')]"           
+                    },
+                "lun": 0
+              }
+          ]
           },
           "networkProfile": {
             "networkInterfaces": [
