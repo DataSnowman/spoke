@@ -13,8 +13,14 @@
 
     Following the deployment you can run `docker` commands by connecting to the virtual machine with SSH.  
 
-2. The example used in this GitHub repo uses SQL Server 2019 running a SQL Server container image on Docker. 
+2. The example used in this GitHub repo uses SQL Server 2019 running in a Docker container image on the Ubuntu Linux VM you deployed above. 
 
-    Click [HERE](https://github.com/DataSnowman/spoke/tree/master/dockerSQL) for directions on how to deploy SQL Server to Docker on the VM deployed in the Repo 
+    `Persist SQL Server files on VM disk`
+    
+    Click [HERE](https://github.com/DataSnowman/spoke/tree/master/dockerSQL) for directions on how to deploy SQL Server to Docker on the deployed VM with persistant SQL Server files on the VM disks
+
+    `Simpler with SQL Server files in the container`
+    
+    Click [HERE](https://github.com/DataSnowman/spoke/blob/master/dockerSQL/simpler.md) for directions on how to deploy SQL Server to Docker on the deployed VM with SQL Server files in the container.  Files will be lost if you remove the container.
 
     The SQL Server part is based on the [Quickstart: Run SQL Server container images with Docker](https://docs.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?view=sql-server-ver15&pivots=cs1-bash)
