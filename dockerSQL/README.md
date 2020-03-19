@@ -1,5 +1,9 @@
 # SQL Server on Docker on Ubuntu VM
 
+### `Note: If you would like a simpler version of this that does not persistant SQL Server files on the VM disks (files are just in the container and will be lost if you remove the container)` Please click [HERE](https://github.com/DataSnowman/spoke/blob/master/dockerSQL/simpler.md) for a simpler faster to configure version.  
+
+### Continue with this Readme if you are looking for a more production scenario.
+
 Based on [Quickstart: Run SQL Server container images with Docker](https://docs.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?view=sql-server-ver15&pivots=cs1-bash)
 
 If you want to use PowerShell or Cmd instead the commands can be found in the Quickstart.
